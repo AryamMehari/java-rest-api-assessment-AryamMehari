@@ -11,7 +11,7 @@ public class PortfolioData {
         return portfolios;
     }
 
-    public class Portfolio {
+    public static class Portfolio {
         private int id;
         private String name;
         private String description;
