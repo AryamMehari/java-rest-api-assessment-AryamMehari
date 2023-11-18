@@ -1,41 +1,40 @@
 [
     {
-      "id": 1,
-      "name": "My Tech Portfolio",
-      "description": "A portfolio of technology stocks",
-      "stocks": [
-        {
-          "symbol": "AAPL",
-          "name": "Apple Inc.",
-          "quantity": 100,
-          "purchasePrice": 150.0
-        },
-        {
-          "symbol": "GOOGL",
-          "name": "Alphabet Inc.",
-          "quantity": 50,
-          "purchasePrice": 2500.0
-        }
-      ]
+        "id": 1,
+        "name": "My Tech Portfolio",
+        "description": "A portfolio of technology stocks",
+        "stocks": [
+            {
+                "symbol": "AAPL",
+                "name": "Apple Inc.",
+                "quantity": 100,
+                "purchasePrice": 150.0
+            },
+            {
+                "symbol": "GOOGL",
+                "name": "Alphabet Inc.",
+                "quantity": 50,
+                "purchasePrice": 2500.0
+            }
+        ]
     },
     {
-      "id": 2,
-      "name": "My Finance Portfolio",
-      "description": "A portfolio of financial stocks",
-      "stocks": [
-        {
-          "symbol": "JPM",
-          "name": "JPMorgan Chase & Co.",
-          "quantity": 75,
-          "purchasePrice": 130.0
-        },
-        {
-          "symbol": "WFC",
-          "name": "Wells Fargo & Co.",
-          "quantity": 60,
-          "purchasePrice": 45.0
-        }
-      ]
+        "id": 2,
+        "name": "My Finance Portfolio",
+        "description": "A portfolio of financial stocks",
+        "stocks": [
+            {
+                "symbol": "JPM",
+                "name": "JPMorgan Chase & Co.",
+                "quantity": 75,
+                "purchasePrice": 130.0
+            },
+            {
+                "symbol": "WFC",
+                "name": "Wells Fargo & Co.",
+                "quantity": 60,
+                "purchasePrice": 45.0
+            }
+        ]
     }
-  ]
-
+]
