@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,7 +61,7 @@ public class ApiController {
             }
         }
 
-        // This endpoint handles a post request to create a new portfolio, it expects a
+        // This endpoint handles a POST request to create a new portfolio, it expects a
         // portfolio which follows the structure specified in the PortfolioData class.
         // This method returns a response based on the success or failure of adding a
         // new portfolio
@@ -74,6 +75,23 @@ public class ApiController {
                 return new ResponseEntity<>("Error adding portfolio: " + e.getMessage(), HttpStatus.BAD_REQUEST);
             }
 
+        }
+
+        // This endpoint handles PUT requests to update a portfolio it expects the id of
+        // the portfolio that needs updating and an updated portfolio in the request
+        // body. This method returns a response based on the success or failure of the
+        // request
+        @PutMapping("/api/update/portfolio/{id}")
+        public ResponseEntity<String> updatePortfolio(@PathVariable int id,
+                @RequestBody PortfolioData.Portfolio updatedPortfolio) {
+            try {
+                portfolioService.updatePortfolio(id, updatedPortfolio);
+                return new ResponseEntity<>("Portfolio updated successfully", HttpStatus.OK);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new ResponseEntity<>("Error updating portfolio: " + e.getMessage(),
+                        HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
 
     }
