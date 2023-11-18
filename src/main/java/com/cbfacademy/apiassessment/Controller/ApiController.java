@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,9 +62,9 @@ public class ApiController {
             }
         }
 
-        // This endpoint handles a POST request to create a new portfolio, it expects a
+        // This method handles a POST request to create a new portfolio, it expects a
         // portfolio which follows the structure specified in the PortfolioData class.
-        // This method returns a response based on the success or failure of adding a
+        // This endpoint returns a response based on the success or failure of adding a
         // new portfolio
         @PostMapping("/api/new/portfolio")
         public ResponseEntity<String> addPortfolio(@RequestBody PortfolioData.Portfolio newPortfolio) {
@@ -77,9 +78,9 @@ public class ApiController {
 
         }
 
-        // This endpoint handles PUT requests to update a portfolio it expects the id of
+        // This method handles PUT requests to update a portfolio it expects the id of
         // the portfolio that needs updating and an updated portfolio in the request
-        // body. This method returns a response based on the success or failure of the
+        // body. This endpoint returns a response based on the success or failure of the
         // request
         @PutMapping("/api/update/portfolio/{id}")
         public ResponseEntity<String> updatePortfolio(@PathVariable int id,
@@ -94,6 +95,20 @@ public class ApiController {
             }
         }
 
+        // This method handles DELETE requests to delete a portfolio, it expects the id
+        // of the portfolio that needs to be deleted. This endpoint returns a response
+        // based on the success or failure of the request.
+        @DeleteMapping("/delete/portfolio/{id}")
+        public ResponseEntity<String> deletePortfolio(@PathVariable int id) {
+            try {
+                portfolioService.deletePortfolio(id);
+                return new ResponseEntity<>("Portfolio deleted successfully", HttpStatus.OK);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new ResponseEntity<>("Error deleting portfolio: " + e.getMessage(),
+                        HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
     }
 
 }

@@ -108,10 +108,37 @@ public class PortfolioService {
             }
 
         } catch (Exception e) {
-            // Handle exceptions, such as file not found 
+            // Handle exceptions, such as file not found
             e.printStackTrace();
             System.err.println("Error updating portfolio: " + e.getMessage());
         }
     }
 
+    public void deletePortfolio(int id) {
+        try {
+            // Define the path to the JSON file
+            String jsonFilePath = "/Users/aryammehari/java-rest-api-assessment-AryamMehari/src/main/java/com/cbfacademy/apiassessment/DataStorage/portfolioData.json";
+
+            // Create a Gson instance
+            Gson gson = new Gson();
+
+            // Read existing JSON data from the file
+            Type listType = new TypeToken<List<PortfolioData.Portfolio>>() {
+            }.getType();
+            List<PortfolioData.Portfolio> existingPortfolios = gson.fromJson(new FileReader(jsonFilePath), listType);
+
+            // Remove the portfolio with the specified ID
+            existingPortfolios.removeIf(portfolio -> portfolio.getId() == id);
+
+            // Write the updated list back to the file
+            try (FileWriter writer = new FileWriter(jsonFilePath)) {
+                gson.toJson(existingPortfolios, writer);
+            }
+
+        } catch (Exception e) {
+            // Handle exceptions, such as file not found or JSON parsing errors
+            e.printStackTrace();
+            System.err.println("Error deleting portfolio: " + e.getMessage());
+        }
+    }
 }
