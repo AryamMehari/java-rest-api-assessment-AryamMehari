@@ -50,7 +50,7 @@ class AppTests {
 		// Check if portfolios is not null before accessing its properties
 		assertNotNull(portfolios);
 		// Check the number of portfolios in the JSON file
-		assertEquals(3, portfolios.size());
+		assertEquals(2, portfolios.size());
 	}
 
 }
