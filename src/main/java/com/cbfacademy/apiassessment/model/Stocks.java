@@ -1,12 +1,17 @@
 package com.cbfacademy.apiassessment.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 // Stocks class represents each stock with its symbol, name, quantity, and purchase price.
 public class Stocks {
     
         private String symbol;
         private String name;
         private int quantity;
-        private double purchasePrice;
+        private double unitPrice;
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM yyyy")
+        private String date;
     
         public String getSymbol() {
             return symbol;
@@ -32,12 +37,20 @@ public class Stocks {
             this.quantity = quantity;
         }
     
-        public double getPurchasePrice() {
-            return purchasePrice;
+        public double getUnitPrice() {
+            return unitPrice;
         }
     
-        public void setPurchasePrice(double purchasePrice) {
-            this.purchasePrice = purchasePrice;
+        public void setUnitPrice(double unitPrice) {
+            this.unitPrice = unitPrice;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
         }
     }
 
