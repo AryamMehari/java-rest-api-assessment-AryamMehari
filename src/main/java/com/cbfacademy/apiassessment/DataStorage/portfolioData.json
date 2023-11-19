@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "My Tech Portfolio",
+        "description": "A portfolio of technology stocks",
+        "stocks": [
+            {
+                "symbol": "AAPLE",
+                "name": "Apple Inc.",
+                "quantity": 100,
+                "unitPrice": 15.0,
+                "date": "27 FEB 2021"
+            },
+            {
+                "symbol": "GOOGLE",
+                "name": "Alphabet Inc.",
+                "quantity": 50,
+                "unitPrice": 25.0,
+                "date": "21 DEC 2020"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "My Finance Portfolio",
+        "description": "A portfolio of financial stocks",
+        "stocks": [
+            {
+                "symbol": "JPM",
+                "name": "JPMorgan Chase Co.",
+                "quantity": 75,
+                "unitPrice": 13.0,
+                "date": "16 SEP 2020"
+            },
+            {
+                "symbol": "WFC",
+                "name": "Wells Fargo Co.",
+                "quantity": 60,
+                "unitPrice": 45.0,
+                "date": "20 JUN 2022"
+            }
+        ]
+    }
+]
