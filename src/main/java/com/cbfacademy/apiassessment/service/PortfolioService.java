@@ -10,11 +10,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
 public class PortfolioService {
-
+    // This method gets all portfolios written in the JSON file
     public List<PortfolioData.Portfolio> getAllPortfolios() {
         try {
             // Define the path to the JSON file
@@ -28,6 +29,9 @@ public class PortfolioService {
             Type listType = new TypeToken<List<PortfolioData.Portfolio>>() {
             }.getType();
             List<PortfolioData.Portfolio> portfolios = gson.fromJson(new FileReader(jsonFilePath), listType);
+
+            // Sort the portfolios by ID
+            portfolios.sort(Comparator.comparingInt(PortfolioData.Portfolio::getId));
 
             return portfolios;
         } catch (Exception e) {
@@ -79,7 +83,9 @@ public class PortfolioService {
         }
 
     }
-    // This method reads then updates the portfolio specified by id from the JSON file
+
+    // This method reads then updates the portfolio specified by id from the JSON
+    // file
     public void updatePortfolio(int id, PortfolioData.Portfolio updatedPortfolio) {
         try {
             // Define the path to the JSON file
@@ -113,6 +119,7 @@ public class PortfolioService {
             System.err.println("Error updating portfolio: " + e.getMessage());
         }
     }
+
     // This method will delete the portfolio specified by id from the JSON file
     public void deletePortfolio(int id) {
         try {
